@@ -2,10 +2,13 @@ from typing import List
 import heapq
 import math
 
-def agi_sort(unsorted_array: List[int]) -> List[int]:
+def agisort(unsorted_array: List[int]) -> List[int]:
     n = len(unsorted_array)
     min_num = min(unsorted_array)
     max_num = max(unsorted_array)
+    if max_num == min_num:
+        return unsorted_array
+    
     buckets = [[] for _ in range(n)]
 
     for num in unsorted_array:
@@ -21,5 +24,5 @@ def agi_sort(unsorted_array: List[int]) -> List[int]:
     return result
 
 unsorted_array = [12, 11, 13, 5, 6]
-sorted_array = agi_sort(unsorted_array)
+sorted_array = agisort(unsorted_array)
 print(sorted_array)
