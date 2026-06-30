@@ -1,29 +1,31 @@
 #include <math.h>
+#include <stdio.h>
+#include <limits.h>
 #include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 #include "heap.h"
 
 void agisort(char* input_bytes, size_t input_count, size_t input_size, int (*score) (const void*)) {
     if (input_count < 2) return;
-
-    char* min_ele_bytes = input_bytes;
-    char* max_ele_bytes = input_bytes;
-    for (size_t i = 1; i < input_count; ++i) {
+    
+    int max_score = INT_MIN;
+    int min_score = INT_MAX;
+    for (size_t i = 0; i < input_count; ++i) {
         char* ith_ele_bytes = input_bytes + (i * input_size);
-        if (score(ith_ele_bytes) < score(min_ele_bytes)) {
-            min_ele_bytes = ith_ele_bytes;
+        int ith_ele_score = score(ith_ele_bytes);
+
+        if (ith_ele_score < min_score) {
+            min_score = ith_ele_score;
         }
-        if (score(ith_ele_bytes) > score(max_ele_bytes)) {
-            max_ele_bytes = ith_ele_bytes;
+        if (ith_ele_score > max_score) {
+            max_score = ith_ele_score;
         }
+
     }
 
-    // printf("%d\n", (*(int*)(max_ele_bytes)));
-
-    if (score(min_ele_bytes) == score(max_ele_bytes)) {
+    if (min_score == max_score) {
         return;
     }
     
@@ -34,7 +36,7 @@ void agisort(char* input_bytes, size_t input_count, size_t input_size, int (*sco
 
     for (size_t i = 0; i < input_count; ++i) {
         char* ith_ele_bytes = input_bytes + (i * input_size);
-        size_t scaled_idx = ((score(ith_ele_bytes) - score(min_ele_bytes)) / (score(max_ele_bytes) - score(min_ele_bytes))) * (input_count - 1);
+        size_t scaled_idx = floorf(((float) (score(ith_ele_bytes) - min_score) / (max_score - min_score)) * (input_count - 1));
         heap_push_impl(heaps + scaled_idx, ith_ele_bytes);
     }
 
