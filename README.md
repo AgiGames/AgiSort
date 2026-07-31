@@ -3,7 +3,7 @@ A novel average case O(n) sorting algorithm.
 
 ## Python Installation
 ```
-pip install python
+pip install agisort
 ```
 
 ### C Installation
