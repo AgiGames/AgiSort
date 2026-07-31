@@ -16,7 +16,7 @@ gcc .\main.c .\c_impl\agisort.c .\c_impl\heap.c -I.\c_impl\ -o main
 ```
 
 ## C Usage
-```
+```C
 #include <agisort.h>
 #include <stdio.h>
 
@@ -40,7 +40,7 @@ int main() {
 ```
 
 ## Python Usage
-```
+```python
 from agisort import agisort
 
 array = [
