@@ -6,6 +6,18 @@ A novel average case O(n) sorting algorithm.
 pip install agisort
 ```
 
+## Python Usage
+```python
+from agisort import agisort
+
+array = [
+    23, 10, 11, 2, 4, 9, 56, 21, 0, 0
+]
+array = agisort(array)
+
+print(array)
+```
+
 ## C Installation
 ```
 git clone git@github.com:AgiGames/AgiSort.git
@@ -37,16 +49,4 @@ int main() {
     }
     printf("\n");
 }
-```
-
-## Python Usage
-```python
-from agisort import agisort
-
-array = [
-    23, 10, 11, 2, 4, 9, 56, 21, 0, 0
-]
-array = agisort(array)
-
-print(array)
 ```
