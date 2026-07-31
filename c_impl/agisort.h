@@ -3,6 +3,6 @@
 
 #include <stddef.h>
 
-void agisort(char* input_bytes, size_t input_count, size_t input_size, int (*score) (const void*));
+void agisort(char* input_bytes, size_t input_count, size_t input_size, double (*score) (const void*));
 
 #endif

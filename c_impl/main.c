@@ -4,9 +4,9 @@
 
 #include "agisort.h"
 
-int score(const void* a) {
+double score(const void* a) {
     int a_int = *((int*) a);
-    return a_int;   
+    return (double) a_int;   
 }
 
 int main() {

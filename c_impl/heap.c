@@ -85,7 +85,7 @@ char* heap_pop_impl(Heap* heap) {
     return top_ele_bytes;
 }
 
-void heap_init(Heap* heap, char* items_bytes, size_t count, size_t item_size, int (*score) (const void*)) {
+void heap_init(Heap* heap, char* items_bytes, size_t count, size_t item_size, double (*score) (const void*)) {
     heap->items = items_bytes;
     heap->count = count;
     heap->capacity = count;
