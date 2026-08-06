@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <malloc.h>
 
-#include "heap.h"
+#include <heap.h>
 
 char* _heap_popped_bytes = NULL;
 
@@ -68,10 +68,6 @@ void heap_push_impl(Heap* heap, char* bytes) {
     free(temp);
 }
 
-void heap_append_impl(Heap* heap, char* bytes) {
-    HEAP_APPEND_BYTES_IMPL(heap, bytes)
-}
-
 char* heap_pop_impl(Heap* heap) {
     int last_index = heap->count - 1;
     if (last_index < 0) return NULL;
@@ -89,6 +85,14 @@ void heap_init(Heap* heap, char* items_bytes, size_t count, size_t item_size, do
     heap->items = items_bytes;
     heap->count = count;
     heap->capacity = count;
+    heap->item_size = item_size;
+    heap->score = score;
+}
+
+void heap_init_empty(Heap* heap, char* item_bytes, size_t capacity, size_t item_size, double (*score) (const void*)) {
+    heap->items = item_bytes;
+    heap->count = 0;
+    heap->capacity = capacity;
     heap->item_size = item_size;
     heap->score = score;
 }

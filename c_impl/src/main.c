@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "agisort.h"
+#include <agisort.h>
 
 double score(const void* a) {
     int a_int = *((int*) a);

@@ -57,9 +57,9 @@ extern char* _heap_popped_bytes;
 
 void heap_build_impl(Heap* heap);
 void heap_push_impl(Heap* heap, char* bytes);
-void heap_append_impl(Heap* heap, char* bytes);
 char* heap_pop_impl(Heap* heap);
-void heap_init(Heap* heap, char* items_bytes, size_t count, size_t capacity, double (*score) (const void*));
+void heap_init(Heap* heap, char* items_bytes, size_t count, size_t item_size, double (*score) (const void*));
+void heap_init_empty(Heap* heap, char* item_bytes, size_t capacity, size_t item_size, double (*score) (const void*));
 void heap_free(Heap* heap);
 
 #endif

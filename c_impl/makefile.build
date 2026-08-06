@@ -1,0 +1,20 @@
+CC = gcc
+
+CFLAGS = -Wall -O2 \
+          -Iinclude \
+
+LDLIBS = -lm
+
+SRC = $(filter-out src/main.c,$(wildcard src/*.c))
+OBJ = $(SRC:.c=.o)
+
+all: libagisort.so
+
+libagisort.so: $(OBJ)
+	$(CC) -shared -o $@ $(OBJ) $(LDFLAGS) $(LDLIBS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -DBUILD_MYLIB -c $< -o $@
+
+clean:
+	rm -f $(OBJ) libagisort.so
