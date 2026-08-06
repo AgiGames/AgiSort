@@ -38,7 +38,6 @@ void agisort(char* input_bytes, size_t input_count, size_t item_size, double (*s
     double scaler = input_count - 1;
     for (size_t i = 0; i < input_count; ++i) {
         size_t scaled_idx = ((scores[i] - min_score) / denom) * scaler;
-        printf("%zu\n", scaled_idx);
         heap_capacities[scaled_idx] += 1;
     }
 
